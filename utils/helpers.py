@@ -40,12 +40,12 @@ def save_uploaded_file(uploaded_file: bytes, save_dir: str):
     except Exception as e:
         logs.log.error(f"Error saving upload to disk: {e}")
 
-
 ###################################
 #
 # Extract File Metadata
 #
 ###################################
+
 
 def get_file_metadata(file_path):
     """

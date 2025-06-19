@@ -1,53 +1,41 @@
-# API RAG
+# RAG API
 
-LOCAL RAG
+LOCAL RAG ENVIRONMENT
+![RAG API Architecture](image.png)
+## Prerequisites
 
-## Setup
+Before starting with Local RAG, make sure you have the following installed:
 
-Before you get started with Local RAG, ensure you have:
+- A running [Ollama](https://github.com/ollama/ollama/) instance on your local machine
+- At least one model loaded in Ollama  
+    - Suggested models: `gemma3:2b` or `gemma3:latest`
+- Python installed
 
-- A local [Ollama](https://github.com/ollama/ollama/) instance
-- At least one model available within Ollama
-    - `gemma3:2b` or `gemma3:latest` are good starter models
-- Python
+**NOTE:** This setup is *not tested* on Windows Subsystem for Linux. For optimal compatibility, consider running on a native Linux environment.
 
-**WARNING:** This application is `untested` on Windows Subsystem for Linux. For best results, please utilize a Linux host if possible.
+### Running Locally
+```bash
+pip install pipenv && pipenv install
+pipenv shell
+streamlit run main.py
+```
 
-### Local
-- `pip install pipenv && pipenv install`
-- `pipenv shell && streamlit run main.py`
+### Ollama Settings
 
-### Docker
-- `docker compose up -d`
+| Setting           | What it does                                                            | Default                   |
+|-------------------|-------------------------------------------------------------------------|---------------------------|
+| **Ollama Endpoint** | The URL where your local Ollama API is running                        | http://localhost:11434    |
+| **Model**         | The language model used to generate responses                          | *(you choose)*            |
+| **Top K**         | Number of similar documents to fetch when answering a question         | 3                         |
+| **Chat Mode**     | The Llama Index mode used for retrieving and generating responses      | Best                      |
 
-# Using Local RAG
+###  Embeddings Settings
 
-## Quick Start
+| Setting             | What it does                                                           | Default             |
+|---------------------|------------------------------------------------------------------------|---------------------|
+| **Embedding Model** | The model used to convert your documents into vectors                  | bge-large-en-v1.5   |
+| **Chunk Size**      | Breaks text into smaller parts to improve embedding accuracy           | 1024                |
 
-1. Set your Ollama endpoint and model under Settings
-2. Upload your documents for processing
-3. Once complete, ask questions based on your documents!
-
-## Settings
-
-All options within the RAG pipeline are exposed to users after toggling `Settings > Show Advanced Options`.
-
-### Ollama
-
-| Setting           | Description                                                            | Default                       |
-|-------------------|------------------------------------------------------------------------|-------------------------------|
-| Ollama Endpoint   | The location of your locally hosted Ollama API                         | http://localhost:11434        |
-| Model             | Large language model to use what generating chat completions           |                               |
-| System Prompt     | Initial system prompt used when initializing the LLM                   | (Please see source code)      |
-| Top K             | Number of most similar documents to retrieve in response to a query    | 3                             |
-| Chat Mode         | [Llama Index](#) chat mode to utilize during retrievals                | Best                          |
-
-### Embeddings
-
-| Setting           | Description                                                             | Default               |
-|-------------------|-------------------------------------------------------------------------|-----------------------|
-| Embedding Model   | Embedding model to be used for vectorize your files                     | bge-large-en-v1.5     |
-| Chunk Size        | Improves embedding precision by focusing on smaller text portions       | 1024                  |
 
 
 ### Edit Prompt
