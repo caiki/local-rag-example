@@ -50,7 +50,7 @@ def set_initial_state():
         st.session_state["messages"] = [
             {
                 "role": "assistant",
-                "content": "Welcome to Local RAG! To begin, please either import some files or ingest a GitHub repo. Once you've completed those steps, we can continue the conversation and explore how I can assist you further.",
+                "content": "Welcome to Local RAG! To begin, please either import some files. Once you've completed those steps, we can continue the conversation and explore how I can assist you further.",
             }
         ]
 
@@ -60,12 +60,6 @@ def set_initial_state():
 
     if "file_list" not in st.session_state:
         st.session_state["file_list"] = []
-
-    if "github_repo" not in st.session_state:
-        st.session_state["github_repo"] = None
-
-    if "websites" not in st.session_state:
-        st.session_state["websites"] = []
 
     ###############
     # Llama-Index #

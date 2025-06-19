@@ -43,75 +43,9 @@ def save_uploaded_file(uploaded_file: bytes, save_dir: str):
 
 ###################################
 #
-# Confirm a GitHub Repo Exists
-#
-###################################
-
-
-def validate_github_repo(repo: str):
-    """
-    Validates whether a GitHub repository exists.
-
-    Args:
-        repo (str): The name of the GitHub repository.
-
-    Returns:
-        True if the repository exists, False otherwise.
-
-    Raises:
-        Exception: If there is an error validating the repository.
-    """
-    repo_endpoint = "https://github.com/" + repo + ".git"
-    resp = requests.head(repo_endpoint)
-    if resp.status_code() == 200:
-        return True
-    else:
-        return False
-
-
-###################################
-#
-# Clone a GitHub Repo
-#
-###################################
-
-
-def clone_github_repo(repo: str):
-    """
-    Clones a GitHub repository.
-
-    Args:
-        repo (str): The name of the GitHub repository.
-
-    Returns:
-        True if the repository is cloned successfully, False otherwise.
-
-    Raises:
-        Exception: If there is an error cloning the repository.
-    """
-    repo_endpoint = "https://github.com/" + repo + ".git"
-    if repo_endpoint is not None:
-        save_dir = os.getcwd() + "/data"
-        clone_command = f"git clone -q {repo_endpoint} {save_dir}/{repo}"
-        try:
-            subprocess.run(clone_command, shell=True)
-            logs.log.info(f"Cloned {repo} repo")
-            return True
-        except Exception as e:
-            Exception(f"Error cloning {repo} GitHub repo: {e}")
-            return False
-
-    else:
-        Exception(f"Failed to process GitHub repo {st.session_state['github_repo']}")
-        return False
-
-
-###################################
-#
 # Extract File Metadata
 #
 ###################################
-
 
 def get_file_metadata(file_path):
     """
