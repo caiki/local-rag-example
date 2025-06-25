@@ -1,10 +1,15 @@
 # RAG API
 
 LOCAL RAG ENVIRONMENT
-![RAG API Architecture](image.png)
+![RAG API](image.png)
 ## Prerequisites
 
 Before starting with Local RAG, make sure you have the following installed:
+- Install in your system:
+```bash
+sudo apt-get install poppler-utils
+sudo apt install tesseract-ocr
+```
 
 - A running [Ollama](https://github.com/ollama/ollama/) instance on your local machine
 - At least one model loaded in Ollama  
@@ -16,6 +21,7 @@ Before starting with Local RAG, make sure you have the following installed:
 ### Running Locally
 ```bash
 pip install pipenv && pipenv install
+pipenv install -r requirements.txt
 pipenv shell
 streamlit run main.py
 ```
@@ -40,3 +46,11 @@ streamlit run main.py
 
 ### Edit Prompt
 Is possible adapt the prompt in components\page_state.py file. Into the "system_prompt" variable.
+
+## Example of Execution FAST API EXTRACT ENTITIES
+#### Command to execute the API endpoint extract_entities
+python utils/extract_entities.py
+#### Example of execution and vector embedding
+![vectors](embedding_faiss.png)
+#### Example of result for an document 
+![result](result_extract_entities.png)

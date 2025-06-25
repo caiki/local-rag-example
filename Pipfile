@@ -18,9 +18,18 @@ streamlit-tags = "*"
 streamlit-extras = "*"
 black = "*"
 torch = { version = "*", sys_platform = "!= 'darwin'" }
-colorama = { version = "*", sys_platform = "== 'win32'" }
 ebooklib = "*"
 llama-index-core = "*"
+fastapi = "*"
+uvicorn = {extras = ["standard"], version = "*"}
+pytesseract = "*"
+pillow = "*"
+pdf2image = "*"
+faiss-cpu = "*"
+sentence-transformers = "*"
+python-multipart = "*"
+colorama = "*"
+openai = "*"
 
 [dev-packages]
 

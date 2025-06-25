@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+pytesseract
+Pillow
+pdf2image
+faiss-cpu
+sentence-transformers
+openai
+python-multipart

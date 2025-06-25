@@ -5,3 +5,6 @@ data/*
 .nv/*
 .DS_Store
 myenv/*
+utils/.env
+utils/test_az_openai.py
+venv/
