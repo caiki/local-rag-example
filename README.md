@@ -54,3 +54,30 @@ python utils/extract_entities.py
 ![vectors](embedding_faiss.png)
 #### Example of result for an document 
 ![result](result_extract_entities.png)
+
+
+---
+
+---
+
+### UNIT TESTS & CI/CD PIPELINE
+
+LOCAL UNIT TESTING & GITHUB ACTIONS CI
+
+![GitHub Secrets Setup](variables.png)
+> *The image above shows the GitHub repository settings where you configure Secrets under "Actions → Variables." These are essential for securely storing sensitive credentials such as API keys, avoiding hardcoding them directly into the source code or CI pipeline.*
+
+---
+
+## 1. Unit Testing
+
+This project includes a unit test located in **`utils/unittest.py`** that validates the entire extraction pipeline:
+
+- Reads from a sample invoice file (**`utils/invoice_test.txt`**)
+- Uses the function `verify_extracted_entities()` defined within the test
+- Internally imports `extract_entities.py` for invoking the actual extraction logic
+- Simulates and asserts the expected JSON output
+
+###  How to run tests locally:
+```bash
+python utils/unittest.py
